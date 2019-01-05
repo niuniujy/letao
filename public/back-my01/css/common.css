@@ -1,4 +1,19 @@
-body{
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+ul{
+    list-style: none;
+    margin:0;
+    padding: 0;
+}
+.red{
+    color:#A94442;
+}
+
+.bg_color{
     background-color:#222D32;
 } 
 
@@ -11,4 +26,127 @@ body{
 }
 .mt-150{
     margin-top:150px;
+}
+
+.lt_aside{
+    width:180px;
+    height:100%;
+    background-color: #222D32;
+    position: fixed;
+    left:0;
+    top:0;
+    z-index: 999;
+    transition:all 1s;
+
+}
+.lt_aside.remove{
+    left:-180px;
+    
+}
+.lt_aside .brand a{
+     display: block;
+     width:100%;
+     height:50px;
+     line-height: 50px;
+     text-align: center;
+     font-size:24px;
+     color:#fff;
+     background-color: #367FA9;
+
+}
+.lt_aside .user{
+ 
+    height:180px;
+    padding-top:30px;
+}
+.lt_aside .user img{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    display:block;
+    margin:0 auto;
+
+}
+.lt_aside .user p{
+    text-align: center;
+    color:#fff;
+    height:40px;
+    line-height: 40px;
+    font-size:18px;
+}
+
+.lt_aside  .nav a{
+    display:block;
+    height:40px;
+    line-height:40px;
+    padding-left:40px;
+    font-size:14px;
+    color:#fff;
+    border-left:3px solid transparent;
+}
+.lt_aside  .nav .child{
+    display:none;
+}
+.lt_aside  .nav .child a{
+    padding-left:60px;
+
+}
+.lt_aside  .nav a.current{
+    border-left:3px solid #006699;
+    background-color:#1D1F21;
+}
+
+.lt_main{
+    width:100%;
+    height:2000px;
+    background-color:pink;
+    padding-left:180px;
+    padding-top:50px;
+    transition:all 1s;
+    
+}
+.lt_main.remove{
+    padding-left:0;
+    
+}
+.lt_topBar{
+    position: fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:50px;
+    background-color:#3C8DBC;
+    padding-left:180px;
+    transition:all 1s;
+}
+.lt_topBar.remove{
+    padding-left:0;
+    
+}
+.lt_topBar .icon_menu ,
+.lt_topBar .icon_logout{
+    width:50px;
+    height:50px;
+    line-height: 50px;
+    text-align: center;
+    font-size:20px;
+    color:#fff;
+}
+
+.lt_main .breadcrumb{
+   margin-top:20px;
+}
+.lt_main .echarts_left,
+.lt_main .echarts_right{
+    width:48%;
+    height:400px;
+    background-color:skyblue;
+
+
+
+
+
+
+
+
 }
