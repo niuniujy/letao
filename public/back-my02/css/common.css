@@ -88,7 +88,7 @@ ul{
 .lt_main{
     width:100%;
     height:2000px;
-    background-color:pink;
+ 
     padding-left:180px;
     padding-top:50px;
     transition:all 1s;
@@ -136,3 +136,23 @@ ul{
     background-color:skyblue;
 
 }
+
+/* 用户管理页面 */
+.table>tbody>tr>td, 
+.table>tbody>tr>th, 
+.table>tfoot>tr>td,
+ .table>tfoot>tr>th, 
+ .table>thead>tr>td, 
+ .table>thead>tr>th{
+     vertical-align: middle;
+     text-align:center;
+ }
+
+ /* 一级分类页 */
+ .mt_20{
+     margin-top:20px;
+ }
+
+ .table img{
+     height:50px;
+ }
