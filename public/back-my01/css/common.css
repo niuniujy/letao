@@ -130,7 +130,7 @@ ul{
     line-height: 50px;
     text-align: center;
     font-size:20px;
-    color:#fff;
+    color:#fff;  
 }
 
 .lt_main .breadcrumb{
@@ -149,6 +149,16 @@ ul{
      vertical-align: middle;
      text-align:center;
  }
+
+ /* 一级分类页面 */
+ .mt_20{  
+     margin-top:20px;
+ }
+ /* 二级分类页面 */
+.table img{
+    height:50px;
+}
+
 
 
 
