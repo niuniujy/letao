@@ -1,5 +1,23 @@
-body{
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+ul{
+    list-style: none;
+    margin:0;
+    padding: 0;
+}
+.bg_color{
     background-color:#222D32;
+}
+.mt_20{
+    margin-top:20px;
+}
+.red{
+    color:#A94442;
 }
 
 .panel-title{
@@ -12,3 +30,123 @@ body{
 .mt-150{
     margin-top:150px;
 }
+.lt_aside{
+    width:180px;
+    height:100%;
+    background-color:#222D32;
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 999;
+    transition:all 1s;
+}
+.lt_aside.remove{
+    left:-180px;
+}
+.lt_aside .brand a{
+    display: block;
+    height:50px;
+    line-height: 50px;
+    background-color: #367FA9;
+    text-align: center;
+    color:#fff;
+    font-size:24px;
+}
+.lt_aside  .user{
+    height:180px;
+    padding-top:30px;
+    
+
+}
+.lt_aside  .user img{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    display:block;
+    margin:0 auto;
+    
+   
+}
+.lt_aside  .user p{
+    text-align:center;
+    color:#fff;
+    height:40px;
+    line-height: 40px;
+    font-size:18px;
+    margin-top:0;
+    margin-bottom:0;
+}
+.lt_aside  .nav a{
+    display: block;
+    height:40px;
+    line-height:40px;
+    padding-left:40px;
+    color:#fff;
+    border-left:3px solid transparent;
+}
+.lt_aside  .nav a.current{
+    border-left:3px solid #006699;
+    background-color:#1D1F21;
+}
+.lt_aside  .nav .child a{
+    padding-left:60px;
+}
+.lt_main{
+    width:100%;
+    height:2000px;
+   
+    padding-left:180px;
+    padding-top:50px;
+    transition:all 1s;
+ 
+}
+.lt_main.remove{
+    padding-left:0;
+}
+.lt_topbar{
+    width:100%;
+    height:50px;
+    position: fixed;
+    top:0;
+    left:0;
+    background-color:#3C8DBC;
+    padding-left:180px;
+    transition:all 1s;
+
+}
+.lt_topbar.remove{
+    padding-left:0;
+}
+.lt_topbar a{
+    display:block;
+    width:50px;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    color:#fff;
+    font-size:20px;
+}
+.lt_main .echarts_box{
+   
+    height:400px;
+}
+.lt_main .echarts_box .echarts_left,
+.lt_main .echarts_box .echarts_right{
+   
+    width:48%;
+    height:400px;
+    background-color:skyblue;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, 
+.table>tfoot>tr>td, .table>tfoot>tr>th, 
+.table>thead>tr>td, .table>thead>tr>th{
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table img{
+    height:50px;
+}
+
+
