@@ -64,6 +64,14 @@ $(function(){
     $(".dropdown-menu").on("click","a",function(){
          var txt=$(this).text();
          $(".dropdown_title").text(txt);
+
+        //  获取a标签上保存的id,赋值给隐藏域的value值
+        var id=$(this).attr("data-id");
+        $('[name="categoryId"]').val(id);
+
+        //选择下拉菜单之后更改校验的状态
+        $("#form").data('bootstrapValidator').updateStatus("categoryId", "VALID");
+
     })
 
     //需求6:点击上传图片,发送ajax请求,将后台返回的路径设置给img的src
@@ -74,9 +82,71 @@ $(function(){
         done:function (e, data) {
           var src=data.result.picAddr;
           $("#fileImg").attr("src",src);
-        }
-  });
+          //将图片的地址赋值给隐藏域
+            $('[name="brandLogo"]').val(src);
 
+            // 图片显示之后更改校验的状态
+            $("#form").data('bootstrapValidator').updateStatus("brandLogo", "VALID");
+        }
+  });   
+//   需求7:表单校验
+$("#form").bootstrapValidator({
+    excluded: [],
+    feedbackIcons: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+    },
+    fields:{
+        categoryId:{
+            validators:{
+                notEmpty: {
+                    message: '请选择一级分类'
+                },
+            }
+        },
+        brandName:{
+            validators:{
+                notEmpty: {
+                    message: '请输入二级分类名称'
+                },
+            }
+        },
+        brandLogo:{
+            validators:{
+                notEmpty: {
+                    message: '请上传图片'
+                },
+            }
+        }
+    }
+})
+// 需求8:提交表单,阻止submit的默认行为,通过ajax提交
+$("#form").on('success.form.bv', function (e) {
+    e.preventDefault();
+    //使用ajax提交逻辑
+    $.ajax({
+        url:"/category/addSecondCategory",
+        type:"post",
+        data:$("#form").serialize(),
+        dataType:"json",
+        success:function(info){
+           
+            if(info.success){
+                $("#secondModal").modal("hide");
+                currentPage=1;
+                render();
+
+                //重置表单
+                $("#form").data('bootstrapValidator').resetForm(true);
+                $(".dropdown_title").text("请选择一级分类");
+                $("#fileImg").attr("src","./images/none.png");
+            }
+
+        }
+    })
+});
+    
   
 
     

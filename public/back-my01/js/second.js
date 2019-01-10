@@ -65,6 +65,13 @@ $(function(){
         var txt=$(this).text();
 
         $(".dropdown_title").text(txt);
+
+        //将a上的id,赋值给input隐藏域
+        var id=$(this).attr("data-id");
+        $('[ name="categoryId"]').val(id);
+
+        // 选择好下拉菜单之后,更改验证的状态
+        $("#form").data('bootstrapValidator').updateStatus("categoryId", "VALID");
     })
 
     //需求5:点击上传图片,发送ajax请求,获取后台返回的路径,设置给图片的src
@@ -76,10 +83,80 @@ $(function(){
             done:function (e, data) {
                var src=data.result.picAddr;
                $(".fileImg").attr("src",src);
+
+               $('[name="brandLogo"]').val(src);
+
+               //图片上传成功之后,更改校验的状态
+               $("#form").data('bootstrapValidator').updateStatus("brandLogo", "VALID");
             }
       });
+
+    //   需求6:表单校验
+    $("#form").bootstrapValidator({
+        excluded: [ ],
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields:{
+            categoryId:{
+                validators:{
+                    notEmpty: {
+                        message: '请选择一级分类'
+                    },
+                }
+            },
+            brandName:{
+                validators:{
+                    notEmpty: {
+                        message: '请选择二级分类'
+                    },
+                }
+            },
+            brandLogo:{
+                validators:{
+                    notEmpty: {
+                        message: '请选择上传图片'
+                    },
+                }
+            }
+        }
+    })
+
+    // 需求7:校验成功之后,提交表单,阻止submit的默认行为,使用ajax提交
+    $("#form").on('success.form.bv', function (e) {
+        e.preventDefault();
+        //使用ajax提交逻辑
+        $.ajax({
+            url:"/category/addSecondCategory",
+            type:"post",
+            data:$("#form").serialize(),
+            dataType:"json",
+            success:function(info){
+                console.log(info);
+                if(info.success){
+                    $("#secondModal").modal("hide");
+                    currentPage=1;
+                    render();
+
+                     // 需求8:提交成功之后,重置表单
+                     $("#form").data('bootstrapValidator').resetForm(true);
+
+                    //  下拉菜单和图片需要手动重置
+                    $(".dropdown_title").text("请选择一级分类");
+
+                    $('.fileImg').attr("src","./images/none.png");
+                }
+
+            }
+        })
+    });
+
+   
+
    
 
 
-
-})
+    
+})  
